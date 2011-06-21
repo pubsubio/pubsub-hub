@@ -1,4 +1,4 @@
-# Pubsub.io documentation
+# Pubsub.io
 **a query based client/server publish subscribe protocol built on node.js.**
 
 Client implementions currently exists for the browser and node.js.
