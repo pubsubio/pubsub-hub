@@ -57,4 +57,3 @@ i.e. `$notnil` checks if a property is different from `undefined` and `null`
 	var query = {
 		friend: {$notlike:'nemesis'} // our friend must not contain the substring nemesis
 	};
-
