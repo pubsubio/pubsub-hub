@@ -1,29 +1,26 @@
-
-
-
 /*{date : {$time : 'Wednesday"}}
-
 
 Second : Minute : Hour Day Month  Year
 
 day date  Day Month Year Hour:Minute:Second +offset-
 */
 
-var days = {sun:0,mon:1,tue:2,wed:3,thu:4,fri:5,sat:6};
-var months = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
-var pattern = /^(?:(mon|tue|wed|thu|fri|sat|sun)\w*)?\s*(\d{1,2})?\s*(?:(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*)?\s*(\d{4})?\s*(?:(\d{1,2})h)?\s*(?:(\d{1,2})m)?\s*(?:(\d{1,2})s)?\s*([+-]\d*\.?\d+)?\s*$/i;
+var DAYS = {sun:0,mon:1,tue:2,wed:3,thu:4,fri:5,sat:6};
+var MONTHS = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+var DATETIME_PATTERN = /^(?:(mon|tue|wed|thu|fri|sat|sun)\w*)?\s*(\d{1,2})?\s*(?:(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*)?\s*(\d{4})?\s*(?:(\d{1,2})h)?\s*(?:(\d{1,2})m)?\s*(?:(\d{1,2})s)?\s*([+-]\d*\.?\d+)?\s*$/i;
 
 var match = function(str) {
-	var match = str.match(pattern);
+	
+	var match = str.match(DATETIME_PATTERN);
 
 	if (!match) {
 		return null;
 	}
 	
 	var time = {
-		day:days[match[1] && match[1].toLowerCase()],
+		day:DAYS[match[1] && match[1].toLowerCase()],
 		date:match[2] && parseInt(match[2],10),
-		month:months[match[3] && match[3].toLowerCase()],
+		month:MONTHS[match[3] && match[3].toLowerCase()],
 		year:match[4] && parseInt(match[4],10) - 1900,	
 		hour:match[5] && parseInt(match[5],10),
 		minute:match[6] && parseInt(match[6],10),
@@ -32,9 +29,13 @@ var match = function(str) {
 	};
 	
 	return function(date) {
-		if(time.timeoffset && date.getTimezoneOffset() !== time.timeoffset) {
+		if (typeof date === 'string') {
+			date = new Date(date);
+		}
+		if (time.timeoffset && date.getTimezoneOffset() !== time.timeoffset) {
 			date = new Date(date.getTime() + 60000 * (date.getTimezoneOffset() + time.timeoffset));
 		}
+		
 		if (time.day !== undefined && date.getDay() !== time.day) {
 			return false;
 		}
@@ -65,7 +66,7 @@ console.log(match('monday')(subject));
 console.log(match('monday 22')(subject));
 console.log(match('monday 22 august')(subject));
 console.log(match('monday 22 august 2011')(subject));
-console.log(match('monday 22 august 2011 10h')(subject));
+console.log(match('22 august 2011 10h')(subject));
 console.log(match('monday 22 august 2011 10h 30m')(subject));
 console.log(match('monday 22 august 2011 10h 30m 0s')(subject));
 console.log(match('monday 22 august 2011 10h 30m 0s +2')(subject));
