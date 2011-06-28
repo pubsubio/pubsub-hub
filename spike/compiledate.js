@@ -61,12 +61,11 @@ var match = function(pattern) {
 };
 var subject = new Date('august 22 2011 10:30:00');
 console.log(subject);
-/*console.log(match('monday')(subject));
+console.log(match('monday')(subject));
 console.log(match('monday 22')(subject));
 console.log(match('monday 22 august')(subject));
 console.log(match('monday 22 august 2011')(subject));
 console.log(match('monday 22 august 2011 8h')(subject));
-*/
 console.log(match('monday 22 august 2011 8h 30m')(subject));
 console.log(match('monday 22 august 2011 8h 30m 00s')(subject));
 console.log(match('monday 22 august 2011 10h 30m 0s +2')(subject));
