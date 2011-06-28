@@ -49,7 +49,7 @@ the language consists of 2 parts. the outer language `{$outer:...}` and the inne
 		age: {$gt:20, $lte:40, $mod:[2,0]} // only match even ages between 20+ and 40		
 	};
 
-`$datetime: pattern`	query against dates. Pattern format: day? date? month? year? hour? minute? second? e.g. Monday 22 August 2011 10h 30m 01s
+`$datetime: pattern`	query against dates. Pattern format: day? date? month? year? hour? minute? second? e.g. `Monday 22 August 2011 10h 30m 01s`
 	
 	var query = {
 		time : {$datetime: 'monday 2011'} // matches dates on mondays in 2011
