@@ -14,7 +14,7 @@ the language consists of 2 parts. the outer language `{$outer:...}` and the inne
 
 	var query = {
 		$or: [{
-			name:'mafintosh' // check where the name is mafintosh
+			name:'pubsub.io' // check where the name pubsub.io
 		}, {
 			{$has:'alias'}   // or wether it has a property called alias
 		}]
