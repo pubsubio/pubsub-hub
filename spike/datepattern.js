@@ -4,7 +4,6 @@ Second : Minute : Hour Day Month  Year
 
 day date  Day Month Year Hour:Minute:Second +offset-
 */
-
 var DAYS = {sun:0,mon:1,tue:2,wed:3,thu:4,fri:5,sat:6};
 var MONTHS = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
 var DATETIME_PATTERN = /^(?:(mon|tue|wed|thu|fri|sat|sun)\w*)?\s*(\d{1,2})?\s*(?:(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*)?\s*(\d{4})?\s*(?:(\d{1,2})h)?\s*(?:(\d{1,2})m)?\s*(?:(\d{1,2})s)?\s*([+-]\d*\.?\d+)?\s*$/i;
@@ -61,15 +60,35 @@ var match = function(str) {
 	};
 };
 
-var subject = new Date('august 22 2011 10:30:00');
-console.log(match('monday')(subject));
-console.log(match('monday 22')(subject));
-console.log(match('monday 22 august')(subject));
-console.log(match('monday 22 august 2011')(subject));
-console.log(match('22 august 2011 10h')(subject));
-console.log(match('monday 22 august 2011 10h 30m')(subject));
-console.log(match('monday 22 august 2011 10h 30m 0s')(subject));
-console.log(match('monday 22 august 2011 10h 30m 0s +2')(subject));
-console.log(match('monday 22 august 2011 7h 30m 0s -1')(subject));
-console.log(match('monday 22 august 2011 9h 00m 0s +.5')(subject));
-console.log(match('monday 22 august 2011 10h 00m 0s +1.5')(subject));
+var tests = [
+	'monday',
+	'monday 22',
+	'monday 22 august',
+	'monday 22 august 2011',
+	'22 august 2011 10h',
+	'monday 22 august 2011 10h 30m',
+	'monday 22 august 2011 10h 30m 0s',
+	'monday 22 august 2011 10h 30m 0s +2',
+	'monday 22 august 2011 7h 30m 0s -1',
+	'monday 22 august 2011 9h 00m 0s +.5',
+	'monday 22 august 2011 10h 00m 0s +1.5',
+	'tue',
+	'tue 23',
+	'tue 23 august',
+	'tue 23 august 2011',
+	'23 august 2011 8h',
+	'tue 22 august 2012 8h 30m',
+	'tue 22 september 2011 8h 30m 00s',
+	'tue 22 august 2011 9h 30m 00s +2',
+	'tue 22 august 2011 8h 40m 00s -1',
+	'tue 22 august 2011 9h 00m10s +.5',
+	'tue 22 august 2011 10h 00m 01s +1.5'
+];
+
+exports.match = match;
+exports.tests = tests;
+
+/*var subject = new Date('august 22 2011 10:30:00');
+for(var i in tests) {
+	console.log(match(tests[i])(subject));
+}*/

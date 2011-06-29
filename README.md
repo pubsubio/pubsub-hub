@@ -134,15 +134,20 @@ The language consists of 2 parts. The outer language `{$outer:...}` and the inne
 		age: {$gt:20, $lte:40, $mod:[2,0]} // only match even ages between 20+ and 40		
 	};
 
-`$datetime: pattern`	query against dates. Pattern format: day? date? month? year? hour? minute? second? e.g. `Monday 22 August 2011 10h 30m 01s`
+`$datetime: pattern`	query against dates. Pattern format: day? date? month? year? hour:minute:second e.g. `Monday 22 August 2011 10:30:01`
 
 	var query = {
 		time : {$datetime: 'monday 2011'} // matches dates on mondays in 2011
 	};
 
 	var query = {
-		time : {$datetime: '10h 30m 00s'} // matches dates every day at 10:30:00 am 
+		time : {$datetime: '10:30:00'} // matches dates every day at 10:30:00 am 
 	};
+
+	var query = {
+		time : {$datetime : '10:--:--'} // matches dates every day at 10 for the entire hour 
+	};
+
 
 `$not: value`      must not be equal to value or match value if it is a regex  
 	

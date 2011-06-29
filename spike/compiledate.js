@@ -1,7 +1,7 @@
 var match = function(pattern) { 
 	var template = /^(?:(mon|tue|wed|thu|fri|sat|sun)\w*)?,?\s*(\d{2})?\s*([a-z]+)?\s*(\d{4})?\s*([\d|-]{1,2}:[\d|-]{1,2}:[\d|-]{1,2})?\s*([+-]\d*\.?\d+)?/i;
 	var matches = pattern.match(template);
-	
+
 	if (!matches) {
 		return function() {
 			return false;
@@ -22,26 +22,44 @@ var match = function(pattern) {
 	regex = new RegExp(regex,'i');
 
 	return function(date) {
+
 		if (offset) {
 			date = new Date(date.getTime() + 60000 * offset);
 		}
+
 		return regex.test(date.toUTCString());
 	};
 };
 
-var subject = new Date('august 22 2011 10:30:00');
-console.log(match('august')(subject));
-console.log(match('monday 22')(subject));
-console.log(match('monday 22 august')(subject));
-console.log(match('monday 22 august 2011')(subject));
-console.log(match('monday 22 august 2011 8:--:--')(subject));
-console.log(match('monda 22 august 2011 8:30:-- +0')(subject));
-console.log(match('monday 22 august 2011 8:30:00')(subject));
-console.log(match('monday 22 august 2011 10:30:0 +2')(subject));
-console.log(match('monday 22 august 2011 7:30:0 -1')(subject));
-console.log(match('monday 22 august 2011 9:00:0 +.5')(subject));
-console.log(match('monday 22 august 2011 10:00:0 +1.5')(subject));
-console.log(match('22 august 2011 10:--:--')(new Date('august 22 2011 10:30:00 GMT+0000')));
-console.log(match('22 august 2011 10:--:-- +2')(new Date('august 22 2011 10:30:00 GMT+0200')));
-console.log(match('22 august 2011 10:--:-- -2')(new Date('august 22 2011 10:30:00 GMT-0200')));
-console.log(match('22 august 2011 10:30:-- +2')(new Date('august 22 2011 10:30:00 GMT+0200')));
+var tests = [
+	'monday',
+	'monday 22',
+	'monday 22 august',
+	'monday 22 august 2011',
+	'22 august 2011 8:--:--',
+	'monday 22 august 2011 8:30:--',
+	'monday 22 august 2011 8:30:00',
+	'monday 22 august 2011 10:30:00 +2',
+	'monday 22 august 2011 7:30:00 -1',
+	'monday 22 august 2011 9:00:00 +.5',
+	'monday 22 august 2011 10:00:00 +1.5',
+	'tue',
+	'tue 23',
+	'tue 23 august',
+	'tue 23 august 2011',
+	'23 august 2011 8:--:--',
+	'tue 22 august 2012 8:30:--',
+	'tue 22 september 2011 8:30:00',
+	'tue 22 august 2011 9:30:00 +2',
+	'tue 22 august 2011 8:40:00 -1',
+	'tue 22 august 2011 9:00:10 +.5',
+	'tue 22 august 2011 10:00:01 +1.5'
+];
+
+exports.match = match;
+exports.tests = tests;
+
+/*var subject = new Date('august 22 2011 10:30:00');
+for(var i in tests) {
+	console.log(match(tests[i])(subject));
+}*/
