@@ -4,7 +4,7 @@ var fastcompile = require('./compiledatefast');
 
 var subject = new Date('august 22 2011 10:30:00');
 
-var amount = 100000;
+var amount = 10000;
 var count = 0;
 
 var funcs = [];
