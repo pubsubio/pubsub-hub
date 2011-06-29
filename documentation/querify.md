@@ -53,11 +53,12 @@ the language consists of 2 parts. the outer language `{$outer:...}` and the inne
 	
 	var query = {
 		time : {$datetime: 'monday 2011'} // matches dates on mondays in 2011
-	}
+	};
 	
 	var query = {
 		time : {$datetime: '10h 30m 00s'} // matches dates every day at 10:30:00 am 
-	}
+	};
+
 `$not: value`      must not be equal to value or match value if it is a regex  
 	
 all language properties can be negated by putting `$not` in front of it.

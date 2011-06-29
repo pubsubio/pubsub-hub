@@ -99,7 +99,7 @@ The language consists of 2 parts. The outer language `{$outer:...}` and the inne
 
 	var query = {
 		$or: [{
-			name:'mafintosh' // check where the name is mafintosh
+			name:'pubsub.io' // check where the name is pubsub.io
 		}, {
 			{$has:'alias'}   // or wether it has a property called alias
 		}]
@@ -132,6 +132,16 @@ The language consists of 2 parts. The outer language `{$outer:...}` and the inne
 
 	var query = {
 		age: {$gt:20, $lte:40, $mod:[2,0]} // only match even ages between 20+ and 40		
+	};
+
+`$datetime: pattern`	query against dates. Pattern format: day? date? month? year? hour? minute? second? e.g. `Monday 22 August 2011 10h 30m 01s`
+
+	var query = {
+		time : {$datetime: 'monday 2011'} // matches dates on mondays in 2011
+	};
+
+	var query = {
+		time : {$datetime: '10h 30m 00s'} // matches dates every day at 10:30:00 am 
 	};
 
 `$not: value`      must not be equal to value or match value if it is a regex  
