@@ -63,7 +63,7 @@ var createRouter = function(options) { // TODO: params instead of matches
 		that.route(request, response);
 	});
 	server.on('upgrade', function(request, connection, head) {
-		if (find('upgrade', request, connection, head)) {
+		if (find(methods.upgrade, request, connection, head)) {
 			return;
 		}
 		
