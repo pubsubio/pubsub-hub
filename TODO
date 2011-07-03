@@ -1,1 +1,3 @@
 add simple auth to queries, {$authenticate, ...}
+merge in the long-polling code
+indexes in matcher
