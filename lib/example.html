@@ -4,12 +4,22 @@
 		<script src="http://localhost:10000/dev"></script>
 		<script>
 			var pubsub = require('pubsub.io').connect();
-		
-			pubsub.subscribe({},function(doc){
-				console.log('got',doc);
+			
+			var ian = {$signed:'MA--!nl7rm*UPQlTNSt0*a*q3fS3JpVI-',value:'ian'};
+			var mathias = {$signed:'MA--!5AayWn3njcKYC0vsFaihYf8Tpyc-',value:'mathias'};
+			
+			var auth = pubsub.auth({ian:'user',mathias:'user'});
+			
+			pubsub.subscribe({to:mathias,from:{$authenticated:'user'}},function(doc) {
+				console.log(doc.from, ':', doc.message);
+			});			
+			pubsub.subscribe({to:ian,from:{$authenticated:'user'}},function(doc) {
+				console.log(doc.from, ':', doc.message);
 			});
-		
-			pubsub.publish({hello:'world'});
+			
+			pubsub.publish({from:mathias,to:auth.ian,message:'hi ian'});
+			pubsub.publish({from:ian,to:auth.mathias,message:'hi mathias'});
+			
 		</script>
 	</head>
 	<body>Look at the console!</body>

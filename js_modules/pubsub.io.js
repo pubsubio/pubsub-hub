@@ -34,6 +34,38 @@ exports.connect = function() {
 	pubsub.publish = function(doc) {
 		socket.send({name:'publish', doc:doc});
 	};
-
+	pubsub.auth = function(type,val) {
+		if (typeof type === 'object') {
+			var result = {};
+			
+			for (var i in type) {
+				result[i] = pubsub.auth(type[i],i);
+			}
+			
+			return result;
+		}
+		if (!val) {
+			val = type;
+			type = 1;
+		}
+		
+		return {$authenticated:type, value:val};
+	};
+	
 	return pubsub;
 };
+
+if (!module.browser) {
+	var signer = require("signer");
+
+	exports.signer = function(secret) {	
+		return function(doc) {
+			var signed = {};
+		
+			for (var i in doc) {
+				signed[i] = {$signed:signer.sign(i.replace(/\//g, '-')+'/'+doc[i]), value:doc[i]};
+			}
+			return signed;
+		};
+	};
+}
