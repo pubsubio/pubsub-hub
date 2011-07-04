@@ -1,0 +1,8 @@
+{
+ "name":"pubsub.io",
+ "contributors": [
+  "Mathias Buus Madsen <m@pubsub.io>",
+  "Ian Jorgensen <i@pubsub.io"
+ ],
+ "main":"./lib/pubsbu.io.js"
+}
