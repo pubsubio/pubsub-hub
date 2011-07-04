@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<script src="http://localhost:10000/dev"></script>
+		<script>
+		var sockets = require('json-sockets');
+		
+		var socket = sockets.connect('localhost:9999');
+		
+		socket.send({hi:1});
+		
+		socket.on('message', function(message) {
+			console.log(JSON.stringify(message));
+		});
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
