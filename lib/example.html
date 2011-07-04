@@ -3,49 +3,13 @@
 	<head>
 		<script src="http://localhost:10000/dev"></script>
 		<script>
-		var common = require('common');
-		var sockets = require('json-sockets');
-
-		var noop = function(){};
+			var pubsub = require('pubsub.io').connect();
 		
-		var socket = sockets.connect('localhost:9999');
+			pubsub.subscribe({},function(doc){
+				console.log('got',doc);
+			});
 		
-		socket.send({hi:1});
-		
-		socket.on('message', function(message) {
-			console.log(JSON.stringify(message));
-		});
-		
-		var pubsub = {};
-		
-		var subscriptions = {};
-		
-		pubsub.subscribe = function(query, selection, callback) {
-			if (!callback) {
-				callback = selection;
-				selection = undefined;
-			}
-			
-			var id = common.gensym();
-			
-			subscriptions[id] = callback;
-			
-			socket.send({name:'subscription', id:id, query:query, selection:selection});
-		};
-		
-		socket.on('message', function(message) {
-			if (message.name === 'publish') {
-				(subscriptions[message.id] || noop)(message.doc);
-			}
-		});
-		
-		pubsub.publish = function(doc) {
-			socket.send({name:'publish', doc:doc});
-		};
-		
-		pubsub.subscribe({},function(doc){
-			console.log('got',doc);
-		});
+			pubsub.publish({hello:'world'});
 		</script>
 	</head>
 	<body>Look at the console!</body>
