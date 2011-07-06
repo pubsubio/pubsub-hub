@@ -1,3 +1,19 @@
+/**
+*    Copyright (C) 2011 Ian Jørgensen <i@pubsub.io>, Mathias Buus Madsen <m@pubsub.io>.
+*
+*    This program is free software: you can redistribute it and/or  modify
+*    it under the terms of the GNU Affero General Public License, version 3,
+*    as published by the Free Software Foundation.
+*
+*    This program is distributed in the hope that it will be useful,
+*    but WITHOUT ANY WARRANTY; without even the implied warranty of
+*    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*    GNU Affero General Public License for more details.
+*
+*    You should have received a copy of the GNU Affero General Public License
+*    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 var match = function(pattern) { 
 	var template = /^(?:(mon|tue|wed|thu|fri|sat|sun)\w*)?,?\s*(\d{2})?\s*([a-z]+)?\s*(\d{4})?\s*([\d|-]{1,2}:[\d|-]{1,2}:[\d|-]{1,2})?\s*([+-]\d*\.?\d+)?/i;
 	var matches = pattern.match(template);

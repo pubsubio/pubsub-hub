@@ -163,3 +163,9 @@ var query = {
 	friend: {$notlike:'nemesis'} // our friend must not contain the substring nemesis
 };
 ```
+
+# LICENSE
+
+Most Pubsub.io source files are made available under the terms of the
+GNU Affero General Public License (AGPL).  See individual files for
+details.
