@@ -136,6 +136,11 @@ var query = {
 	age: {$gt:20, $lte:40, $mod:[2,0]} // only match even ages between 20+ and 40		
 };
 ```
+`$distance: circle`		check if point is within a circle  `{lat:0,lon:0}` with radius `800 km|m|mi|yd|ft`
+
+```js
+var query = {point: {$distance: {center: {lat:0,lon:0}, radius:'800 km'}}};
+```
 
 `$datetime: pattern`	query against dates. Pattern format: day? date? month? year? hour:minute:second e.g. `Monday 22 August 2011 10:30:01`
 
