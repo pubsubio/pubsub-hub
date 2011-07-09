@@ -1,1 +1,23 @@
+apps
+
+clustering
+clients
+
+reconnect
+heartbeats
+
+sub hubs
+trusted clients + hub permission
+
+socket fallback
+rest web hooks
+
+rest publish interface
+rest subscribe interface
+
 indexes in matcher
+_____________________________
+DONE
+_____________________________
+
+licensing
