@@ -17,6 +17,14 @@ pubsub.subscribe({}, function(doc) {
 pubsub.publish({foo:'bar'});
 ```
 
+## Running it
+
+    $ cd lib
+    $ node server.js
+    
+    [Look at the example](http://localhost:9999/example) and inspect your console. (Needs Chrome.)
+
+
 ### [try running this yourself](http://jsconsole.com/?%3Aload%20http%3A%2F%2Fpubsub.io%2Fjs%2Fpubsub.js)
 
 The client library is hosted at [http://pubsub.io/js/pubsub.js](http://pubsub.io/js/pubsub.js)
