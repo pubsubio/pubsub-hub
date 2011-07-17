@@ -5,10 +5,10 @@ Client implementions currently exists for the browser and node.js.
 
 ```js
 // to connect in node.js do:
-var pubsub = require('pubsub').connect('www.pubsub.io');
+var pubsub = require('pubsub').connect('hub.pubsub.io');
 
 // to connect in the browser do:
-var pubsub = pubsub.connect('www.pubsub.io');
+var pubsub = pubsub.connect('hub.pubsub.io');
 
 pubsub.subscribe({}, function(doc) {
 	console.log('someone published', doc);
@@ -17,9 +17,9 @@ pubsub.subscribe({}, function(doc) {
 pubsub.publish({foo:'bar'});
 ```
 
-### [try running this yourself](http://jsconsole.com/?%3Aload%20http%3A%2F%2Fpubsub.io%2Fjs%2Fpubsub.js)
+### try running this yourself
 
-The client library is hosted at [http://pubsub.io/js/pubsub.js](http://pubsub.io/js/pubsub.js)
+The client library is hosted at [http://pubsub.io/pubsub.io.js](http://pubsub.io/pubsub.io.js)
 
 # Publish
 
