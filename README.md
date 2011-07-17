@@ -5,7 +5,7 @@ Client implementions currently exists for the browser and node.js.
 
 ```js
 // to connect in node.js do:
-var pubsub = require('pubsub').connect('hub.pubsub.io');
+var pubsub = require('pubsub.io').connect('hub.pubsub.io');
 
 // to connect in the browser do:
 var pubsub = pubsub.connect('hub.pubsub.io');
@@ -20,6 +20,8 @@ pubsub.publish({foo:'bar'});
 ### try running this yourself
 
 The client library is hosted at [http://pubsub.io/pubsub.io.js](http://pubsub.io/pubsub.io.js)
+
+The nodejs library is hosted at npm. npm install pubsub.io
 
 # Publish
 
