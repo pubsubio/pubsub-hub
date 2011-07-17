@@ -24,7 +24,7 @@ Or from source:
 
 ### curl.getJSON
 
-<pre>curl.getJSON(url, options, function(err, response, data){})</pre>
+<pre>curl.getJSON(url, options, function(err, response, data){});</pre>
 
 ### curl.postJSON
 
