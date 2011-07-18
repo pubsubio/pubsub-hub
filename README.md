@@ -21,7 +21,7 @@ pubsub.publish({foo:'bar'});
 
 The client library is hosted at [http://pubsub.io/pubsub.io.js](http://pubsub.io/pubsub.io.js)
 
-The nodejs library is hosted at npm. npm install pubsub.io
+The nodejs library is available through npm. `npm install pubsub.io`
 
 # Publish
 
