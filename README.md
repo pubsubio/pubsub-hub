@@ -17,7 +17,7 @@ pubsub.subscribe({}, function(doc) {
 pubsub.publish({foo:'bar'});
 ```
 
-### try running this yourself
+### Try running this yourself
 
 The client library is hosted at [http://pubsub.io/pubsub.io.js](http://pubsub.io/pubsub.io.js)
 
