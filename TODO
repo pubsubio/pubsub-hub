@@ -1,23 +1,19 @@
-apps
+# TODO ############################
 
+apps
 clustering
 clients
-
 reconnect
-heartbeats
-
-sub hubs
 trusted clients + hub permission
-
-socket fallback
-rest web hooks
-
-rest publish interface
-rest subscribe interface
-
 indexes in matcher
-_____________________________
-DONE
-_____________________________
+discuss functions as queries
+
+# DONE #############################
 
 licensing
+socket fallback
+rest web hooks
+rest publish interface
+rest subscribe interface
+heartbeats
+sub hubs
