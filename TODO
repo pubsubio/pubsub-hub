@@ -1,19 +1,30 @@
-# TODO ############################
-
 apps
+add sample section with auth and non auth examples.
+document the web hooks interface
+
 clustering
 clients
+
 reconnect
+heartbeats
+
+sub hubs
 trusted clients + hub permission
-indexes in matcher
-discuss functions as queries
 
-# DONE #############################
-
-licensing
 socket fallback
 rest web hooks
+
 rest publish interface
 rest subscribe interface
-heartbeats
-sub hubs
+
+indexes in matcher
+
+revisit the function idea, @jedschmidt had some really good points for it
+_____________________________
+DONE
+_____________________________
+auth sub hubs
+release 0.1
+sub hub 0.1
+long polling fallback
+licensing
