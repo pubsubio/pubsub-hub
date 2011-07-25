@@ -1,14 +1,14 @@
 # transport documentation
-*draft 0*
+*07/25/2011 - draft 0*
 
 ## prerequisites
 
-all low level transports to the server are using the [websocket protocol](http://en.wikipedia.org/wiki/WebSockets)
+all low level transports to the server are using the [websocket protocol](http://en.wikipedia.org/wiki/WebSockets)  
 all websocket messages in pubsub consists entirely of JSON.
 
 ## handshake
 
-the first message after connecting is a handshake.
+the first message after connecting is a handshake.  
 as each connection is currently bound to a specific `subhub` it needs to be specified here. 
 
 	{sub:name_of_subhub}
@@ -19,7 +19,7 @@ if you want to subscribe to a query you send the following message:
 
 	{name:'subscribe', query:your_query, challenge:your_auth_challenge, id:your_own_subscription_id}
 
-where `challenge` is optional.
+where `challenge` is optional.  
 the `id` is your own id for this subscription. The hub will notify you whenever your subscription is matched by sending the following message:
 
 	{name:'publish', doc:the_matches_document, id:your_subscription_id}
