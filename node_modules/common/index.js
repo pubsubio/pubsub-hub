@@ -132,7 +132,7 @@ exports.step = function(funcs, onerror) {
 		counter = completed = 0;
 		values = [];
 		complete = false;
-		fn.apply(state, pointer < funcs.length ? args : [value]);
+		fn.apply(state, pointer < funcs.length ? args : [value, next]);
 		complete = true;
 
 		if (counter && check()) {
